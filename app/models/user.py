@@ -20,18 +20,7 @@ class User(db.Model):
             return "You are logged in"
 
 
-if __name__=="__main__":
-    app = create_app()
 
-    with app.app_context():
-        # Check if the user already exists
-        if not User.query.filter_by(username="test_user").first():
-            user = User("denystest", "email@test.com", "password")
-            db.session.add(user)
-            db.session.commit()
-            print("Test user created.")
-        else:
-            print("User already exists.")
 
 
 

@@ -1,8 +1,8 @@
-from flask import Blueprint, jsonify, request
-from .models.user import User
-from . import db
+from flask import Blueprint, jsonify, request, render_template
+from app.models.user import User
+from app import db
 
-bp = Blueprint('main', __name__)
+bp = Blueprint('user', __name__)
 
 @bp.route('/users', methods=['GET'])
 def get_users():
@@ -23,3 +23,21 @@ def add_user():
     db.session.add(new_user)
     db.session.commit()
     return jsonify({"Message":"User created successfully!"}), 201
+
+@bp.route('/delete_user', methods=['DELETE'])
+def delete_user():
+    data = request.json
+    username = data.get('username')
+
+    if not username:
+        return jsonify({"error": "Missing data"}), 400
+
+    user = User.query.filter_by(username=username).first()
+
+    if not user:
+        return jsonify({"error" : "User not found"}, 404)
+
+    db.session.delete(user)
+    db.session.commit()
+
+    return jsonify({"Message": f"User {username} deleted successfully!"}), 200

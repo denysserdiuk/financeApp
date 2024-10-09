@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing page</title>
+    <link rel="stylesheet" href="../static/css/index.css" />
+    <script src="../static/registration.js" defer></script>
+    <!-- Include your registration.js file -->
+  </head>
+
+  <body>
+    <header>
+      <div class="header-main" type="bar">
+        <img class="header__logo" src="../static/img/testLOGO-1176040154-612x612.jpg" alt="logo">
+        <h1 class="header__tytle">COUNT-UP</h1>
+        <ul class="header__menu">
+          <li class="header__menu-item"><a href="login">Login</a></li>
+          <li class="header__menu-item"><a href="javascript:void(0);" onclick="openModal()">Sign-up</a></li>
+        </ul>
+      </div>
+    </header>
+
+
+    <main>
+      <section class="header__hero">
+        <div>
+          
+        </div>        
+      </section>
+    </main>
+
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" onclick="closeModal()">&times;</span>
+        <form id="registrationForm">
+          <h2>Registration</h2>
+          <input type="text" id="username" placeholder="Username" required />
+          <input type="email" id="email" placeholder="Email" required />
+          <input type="password" id="password" placeholder="Password" required />
+          <button type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+    <footer></footer>
+  </body>
+</html>
